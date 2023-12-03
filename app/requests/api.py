@@ -3,6 +3,7 @@ import json
 import requests
 
 from app.actions.clients.keyboards import add_client_reply_keyboard
+from app.common.enviroments import API_URL
 from app.constants.text import TextMsg
 from app.requests.exceptions import ResponseNotFound, ResponseBadRequest, ResponseInternalServerError
 from app.requests.models import GetClientsReqDto, ClientDto, ClientSuccessResDto
@@ -10,7 +11,7 @@ from telebot.async_telebot import AsyncTeleBot
 
 
 class API:
-    def __init__(self, bot: AsyncTeleBot, chat_id: int, url='http://localhost:3000'):
+    def __init__(self, bot: AsyncTeleBot, chat_id: int, url=f'http://{API_URL}'):
         self.url = url
         self.limit = 10
         self.bot = bot
